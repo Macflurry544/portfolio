@@ -3,30 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- ══ SEO PRIMAIRE ══ -->
 <title>Augustin Fleury — Photographe | Photographie Artistique</title>
 <meta name="description" content="Portfolio photographique d'Augustin Fleury. Des images qui respirent, des instants capturés avec intention. Lumière naturelle, portrait, paysage.">
 <meta name="keywords" content="Augustin Fleury, photographe, photographie artistique, portrait, lumière naturelle, portfolio photo">
 <meta name="author" content="Augustin Fleury">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://augustinfleury.github.io/Portfolio/">
-
-<!-- ══ OPEN GRAPH (réseaux sociaux) ══ -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://augustinfleury.github.io/Portfolio/">
 <meta property="og:title" content="Augustin Fleury — Photographe">
 <meta property="og:description" content="Des images qui respirent. Des instants capturés avec intention.">
 <meta property="og:image" content="assets/Exportsfinals_60_resultat.jpg">
 <meta property="og:locale" content="fr_FR">
-
-<!-- ══ TWITTER CARD ══ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Augustin Fleury — Photographe">
 <meta name="twitter:description" content="Des images qui respirent. Des instants capturés avec intention.">
 <meta name="twitter:image" content="assets/Exportsfinals_60_resultat.jpg">
-
-<!-- ══ DONNÉES STRUCTURÉES (Schema.org) ══ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,398 +31,582 @@
   "sameAs": []
 }
 </script>
-
-<!-- ══ FAVICON ══ -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' stroke='%23c8a96e' stroke-width='1.5' fill='none'/><circle cx='16' cy='16' r='5' fill='%23c8a96e'/></svg>">
-
-<!-- ══ POLICES ══ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
-
-<!-- ══ PRÉCHARGEMENT DES IMAGES CRITIQUES ══ -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/Exportsfinals_60_resultat.jpg">
-
 <style>
-  :root {
-    --bg: #0a0a09;
-    --fg: #f0ece4;
-    --accent: #c8a96e;
-    --muted: rgba(240,236,228,0.35);
-    --nav-w: 64px;
-    --nav-w-open: 220px;
-    --transition: 0.6s cubic-bezier(0.16,1,0.3,1);
-  }
+:root {
+  --bg: #0a0a09;
+  --fg: #f0ece4;
+  --accent: #c8a96e;
+  --muted: rgba(240,236,228,0.45);
+  --nav-w: 240px;
+  --transition: 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    cursor: none;
-  }
+/* ── CURSEUR CUSTOM ── */
+.cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  transform: translate(-50%,-50%); transition: transform 0.1s;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(200,169,110,0.5); border-radius: 50%;
+  transform: translate(-50%,-50%);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), width 0.3s, height 0.3s, border-color 0.3s;
+  position: absolute; top: 0; left: 0;
+}
+body.hovering .cursor-ring { width: 56px; height: 56px; border-color: var(--accent); }
 
-  /* ── CURSEUR CUSTOM ── */
-  .cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
-  .cursor-dot {
-    width: 6px; height: 6px;
-    background: var(--accent); border-radius: 50%;
-    transform: translate(-50%,-50%); transition: transform 0.1s;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1px solid rgba(200,169,110,0.5); border-radius: 50%;
-    transform: translate(-50%,-50%);
-    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), width 0.3s, height 0.3s, border-color 0.3s;
-    position: absolute; top: 0; left: 0;
-  }
-  body.hovering .cursor-ring { width: 56px; height: 56px; border-color: var(--accent); }
+/* ── NAV LATÉRALE — toujours visible sur desktop ── */
+nav {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: var(--nav-w);
+  z-index: 100;
+  display: flex; flex-direction: column;
+  padding: 48px 0 36px;
+  background: rgba(10,10,9,0.92);
+  backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(200,169,110,0.12);
+}
 
-  /* ── NAV LATÉRALE ── */
+/* Logo / signature en haut */
+.nav-brand {
+  padding: 0 32px 40px;
+  border-bottom: 1px solid rgba(240,236,228,0.07);
+  margin-bottom: 40px;
+}
+.nav-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--fg);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.nav-brand-name em { color: var(--accent); }
+.nav-brand-title {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* Liens */
+.nav-links {
+  display: flex; flex-direction: column; gap: 6px;
+  list-style: none;
+  padding: 0 20px;
+  flex: 1;
+}
+.nav-links a {
+  text-decoration: none;
+  color: rgba(240,236,228,0.45);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.3s, background 0.3s, padding-left 0.3s;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+.nav-links a:hover {
+  color: var(--fg);
+  background: rgba(240,236,228,0.04);
+  padding-left: 22px;
+}
+.nav-links a.active {
+  color: var(--accent);
+  background: rgba(200,169,110,0.07);
+}
+.nav-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.nav-icon path, .nav-icon circle, .nav-icon rect, .nav-icon line { stroke: currentColor; stroke-width: 1.3; fill: none; }
+
+/* Bas de nav */
+.nav-footer {
+  padding: 24px 32px 0;
+  border-top: 1px solid rgba(240,236,228,0.07);
+}
+.nav-footer-text {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,236,228,0.2);
+  line-height: 1.8;
+}
+
+/* ── MAIN ── */
+main { margin-left: var(--nav-w); }
+
+/* ── HERO ── */
+#hero {
+  position: relative; height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 8vw 10vh; overflow: hidden;
+}
+.hero-video {
+  position: absolute; inset: 0;
+  object-fit: cover; width: 100%; height: 100%; opacity: 0.45;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,9,0.95) 0%, rgba(10,10,9,0.2) 50%, rgba(10,10,9,0.5) 100%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.38em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 20px; opacity: 0; transform: translateY(20px);
+  animation: fadeUp 1s 0.3s forwards;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(4rem, 10vw, 10rem); line-height: 0.9; letter-spacing: -0.02em;
+  opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s forwards;
+}
+.hero-name em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  margin-top: 28px; font-size: 13px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); max-width: 360px; line-height: 2.2;
+  opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s forwards;
+}
+.scroll-hint {
+  position: absolute; bottom: 36px; right: 8vw;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);
+  opacity: 0; animation: fadeUp 1s 1.4s forwards;
+}
+.scroll-line { width: 40px; height: 1px; background: var(--muted); position: relative; overflow: hidden; }
+.scroll-line::after {
+  content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%;
+  background: var(--accent); animation: scanLine 2s 2s infinite;
+}
+@keyframes scanLine { 0%{left:-100%} 100%{left:100%} }
+@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+
+/* ── SECTIONS ── */
+section { padding: 10vh 8vw; }
+.section-label {
+  font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 64px;
+  display: flex; align-items: center; gap: 20px;
+  font-weight: 400;
+}
+.section-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+
+/* ── GALERIE ── */
+#galerie {
+  padding-top: 14vh;
+  padding-left: 0; padding-right: 0;
+}
+#galerie > .section-label { padding-left: 8vw; }
+
+.film-strip {
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+.film-track {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  padding: 0 8vw;
+  height: 72vh;
+  will-change: transform;
+  user-select: none;
+}
+.photo-item {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #111110;
+  cursor: none;
+}
+.photo-item[data-orientation="portrait"]  { width: calc(72vh * 0.67); }
+.photo-item[data-orientation="paysage"]   { width: calc(72vh * 1.55); }
+.photo-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 1.1s cubic-bezier(0.16,1,0.3,1), filter 0.8s ease;
+  filter: grayscale(30%) brightness(0.82);
+}
+.photo-item.is-focused img {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.03);
+}
+.photo-item::before {
+  content: attr(data-num);
+  position: absolute; top: 18px; left: 18px;
+  font-size: 10px; font-weight: 300;
+  letter-spacing: 0.3em; color: rgba(200,169,110,0.5);
+  z-index: 2; opacity: 0;
+  transition: opacity 0.4s, color 0.4s;
+}
+.photo-item.is-focused::before { opacity: 1; color: var(--accent); }
+.photo-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 40px 20px 20px;
+  background: linear-gradient(transparent, rgba(10,10,9,0.9));
+  font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(240,236,228,0.6);
+  transform: translateY(14px); opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.4s;
+  z-index: 2;
+}
+.photo-item.is-focused .photo-caption { transform: translateY(0); opacity: 1; }
+
+/* Film footer avec flèches plus visibles */
+.film-footer {
+  display: flex; align-items: center; gap: 20px;
+  padding: 28px 8vw 0;
+  font-size: 10px; letter-spacing: 0.3em; color: rgba(240,236,228,0.35);
+  text-transform: uppercase;
+}
+.film-progress-track {
+  flex: 1; height: 1px; background: rgba(240,236,228,0.1);
+  position: relative; overflow: hidden; border-radius: 1px;
+}
+.film-progress-thumb {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: var(--accent); width: 0;
+  transition: width 0.25s cubic-bezier(0.16,1,0.3,1), left 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* Boutons ← → redessinés, bien visibles */
+.film-nav-btns {
+  display: flex; gap: 10px; flex-shrink: 0;
+}
+.film-btn {
+  background: rgba(200,169,110,0.08);
+  border: 1px solid rgba(200,169,110,0.35);
+  color: var(--accent);
+  font-size: 18px; line-height: 1;
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: none; border-radius: 3px;
+  transition: border-color 0.3s, color 0.3s, background 0.3s, transform 0.2s;
+  font-family: 'Cormorant Garamond', serif;
+}
+.film-btn:hover {
+  border-color: var(--accent);
+  background: rgba(200,169,110,0.18);
+  transform: scale(1.05);
+}
+.film-btn:disabled { opacity: 0.2; pointer-events: none; }
+.film-btn-hint {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(200,169,110,0.35);
+  text-transform: uppercase;
+  padding: 0 8vw;
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* ── À PROPOS — avec texte défilant ── */
+#about {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  border-top: 1px solid rgba(240,236,228,0.07);
+}
+.about-text h2 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(3rem, 5vw, 5rem); line-height: 1.1; margin-bottom: 48px;
+}
+.about-text h2 em { font-style: italic; color: var(--accent); }
+
+/* Phrases défilantes */
+.about-phrases {
+  position: relative;
+  min-height: 200px;
+  margin-bottom: 32px;
+}
+.about-phrase {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.9;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+.about-phrase.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-phrase strong {
+  color: var(--fg);
+  font-weight: 400;
+}
+.about-phrase em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.about-img { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+.about-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+.about-img::after {
+  content: ''; position: absolute; bottom: -30px; left: -30px;
+  width: 120px; height: 120px; border: 1px solid var(--accent); pointer-events: none;
+}
+.deco-svg { position: absolute; pointer-events: none; opacity: 0.06; }
+
+/* ── SECTION COURT MÉTRAGE ── */
+#cinema {
+  padding: 0;
+  border-top: 1px solid rgba(240,236,228,0.07);
+  position: relative;
+}
+.cinema-inner {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.cinema-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.55;
+}
+.cinema-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,10,9,0.95) 0%,
+    rgba(10,10,9,0.3) 55%,
+    rgba(10,10,9,0.6) 100%
+  );
+}
+.cinema-content {
+  position: relative; z-index: 2;
+  padding: 0 8vw 10vh;
+  width: 100%;
+}
+.cinema-label {
+  font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 20px;
+  font-weight: 400;
+}
+.cinema-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+.cinema-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(3rem, 7vw, 7rem); line-height: 0.9;
+  letter-spacing: -0.02em; margin-bottom: 24px;
+}
+.cinema-title em { font-style: italic; color: var(--accent); }
+.cinema-desc {
+  font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); max-width: 420px; line-height: 2;
+}
+/* Bouton play */
+.cinema-play-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 80px; height: 80px;
+  border: 1.5px solid rgba(200,169,110,0.6);
+  border-radius: 50%;
+  background: rgba(10,10,9,0.4);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  cursor: none;
+  transition: border-color 0.35s, background 0.35s, transform 0.35s;
+}
+.cinema-play-btn:hover {
+  border-color: var(--accent);
+  background: rgba(200,169,110,0.15);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.cinema-play-btn svg { margin-left: 4px; }
+/* Contrôle son */
+.cinema-mute-btn {
+  position: absolute; top: 24px; right: 32px; z-index: 4;
+  background: rgba(10,10,9,0.5); border: 1px solid rgba(200,169,110,0.25);
+  color: var(--accent); border-radius: 3px;
+  padding: 8px 14px; font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; cursor: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.cinema-mute-btn:hover { border-color: var(--accent); background: rgba(200,169,110,0.1); }
+
+/* ── CONTACT ── */
+#contact {
+  text-align: center; padding: 14vh 8vw 16vh;
+  border-top: 1px solid rgba(240,236,228,0.07);
+  position: relative; overflow: hidden;
+}
+#contact h2 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(3.2rem, 7vw, 7.5rem); line-height: 1; margin-bottom: 40px;
+}
+#contact p { font-size: 13px; letter-spacing: 0.18em; color: var(--muted); margin-bottom: 56px; }
+.mail-wrapper { display: inline-flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
+.btn-mail {
+  display: inline-flex; align-items: center; gap: 16px;
+  color: var(--accent); text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.4rem); font-weight: 300; font-style: italic;
+  letter-spacing: 0.05em; cursor: none;
+}
+.btn-mail-icon { width: 22px; height: 22px; flex-shrink: 0; opacity: 0.4; transition: opacity 0.5s; }
+.btn-mail:hover .btn-mail-icon { opacity: 0.9; }
+.btn-mail-icon path { stroke: currentColor; stroke-width: 1.2; fill: none; }
+.mail-chars { display: inline-flex; overflow: visible; }
+.mail-char {
+  display: inline-block;
+  transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.4s, color 0.3s;
+  will-change: transform, opacity;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(240,236,228,0.05);
+  padding: 28px 8vw; display: flex; justify-content: space-between; align-items: center;
+  font-size: 10px; letter-spacing: 0.22em; color: rgba(240,236,228,0.2);
+}
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(10,10,9,0.97);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s; cursor: none;
+}
+.lightbox.active { opacity: 1; pointer-events: all; }
+.lightbox img {
+  max-width: 90vw; max-height: 88vh; object-fit: contain;
+  transform: scale(0.96); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.lightbox.active img { transform: scale(1); }
+.lightbox-close {
+  position: absolute; top: 28px; right: 36px;
+  background: none; border: none; color: var(--fg);
+  cursor: none; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; padding: 8px;
+}
+.lightbox-close:hover { color: var(--accent); }
+.lb-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(10,10,9,0.5); border: 1px solid rgba(200,169,110,0.3);
+  color: var(--accent);
+  cursor: none; padding: 16px 20px; font-size: 18px; letter-spacing: 0.2em;
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
+  border-radius: 3px;
+}
+.lb-nav:hover { color: var(--fg); border-color: var(--accent); background: rgba(200,169,110,0.1); }
+.lb-prev { left: 24px; } .lb-next { right: 24px; }
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025; pointer-events: none; z-index: 998;
+}
+
+/* ── REVEAL AU SCROLL ── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.26s; }
+.reveal-delay-3 { transition-delay: 0.4s; }
+
+/* ══ RESPONSIVE MOBILE ══ */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  .cursor { display: none; }
   nav {
-    position: fixed;
-    left: 0; top: 0; bottom: 0;
-    width: var(--nav-w);
-    z-index: 100;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transition: width var(--transition);
-    background: rgba(10,10,9,0.85);
-    backdrop-filter: blur(12px);
-    border-right: 1px solid rgba(240,236,228,0.06);
+    left: 0; right: 0; top: 0; bottom: auto;
+    width: 100% !important;
+    height: 58px;
+    flex-direction: row; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+    border-right: none;
+    border-bottom: 1px solid rgba(240,236,228,0.07);
     overflow: hidden;
+    transition: height 0.65s cubic-bezier(0.16,1,0.3,1);
   }
-  nav.open { width: var(--nav-w-open); }
-
-  .nav-toggle {
-    position: absolute; top: 28px; left: 50%; transform: translateX(-50%);
-    background: none; border: none; cursor: none;
+  nav.mob-open {
+    height: 100svh;
+    background: rgba(10,10,9,0.97);
+    align-items: flex-start; flex-direction: column;
+    justify-content: flex-start; padding: 80px 36px 40px; gap: 0;
+  }
+  .nav-brand {
+    padding: 0; border-bottom: none; margin-bottom: 0;
+    order: 1;
+  }
+  .nav-brand-title { display: none; }
+  .nav-brand-name { font-size: 1.1rem; }
+  .nav-toggle-mob {
     display: flex; flex-direction: column; gap: 5px; padding: 8px;
+    background: none; border: none; cursor: pointer;
+    order: 2;
   }
-  .nav-toggle span {
+  .nav-toggle-mob span {
     display: block; height: 1px; background: var(--fg);
     transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
   }
-  .nav-toggle span:nth-child(1) { width: 24px; }
-  .nav-toggle span:nth-child(2) { width: 16px; }
-  .nav-toggle span:nth-child(3) { width: 20px; }
-  nav.open .nav-toggle span:nth-child(1) { width: 22px; transform: translateY(6px) rotate(45deg); }
-  nav.open .nav-toggle span:nth-child(2) { opacity: 0; width: 0; }
-  nav.open .nav-toggle span:nth-child(3) { width: 22px; transform: translateY(-6px) rotate(-45deg); }
-
-  .nav-links { display: flex; flex-direction: column; gap: 32px; list-style: none; align-items: flex-start; padding-left: 20px; width: 100%; }
+  .nav-toggle-mob span:nth-child(1) { width: 24px; }
+  .nav-toggle-mob span:nth-child(2) { width: 16px; }
+  .nav-toggle-mob span:nth-child(3) { width: 20px; }
+  nav.mob-open .nav-toggle-mob span:nth-child(1) { width: 22px; transform: translateY(6px) rotate(45deg); }
+  nav.mob-open .nav-toggle-mob span:nth-child(2) { opacity: 0; width: 0; }
+  nav.mob-open .nav-toggle-mob span:nth-child(3) { width: 22px; transform: translateY(-6px) rotate(-45deg); }
+  .nav-links { flex-direction: column; gap: 0; width: 100%; padding-left: 0; order: 3; margin-top: 16px; }
+  .nav-links li { border-bottom: 1px solid rgba(240,236,228,0.05); }
   .nav-links a {
-    text-decoration: none; color: var(--muted);
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    transition: color 0.3s; white-space: nowrap;
-    display: flex; align-items: center; gap: 14px;
-    overflow: hidden;
+    padding: 20px 0; font-size: 14px; gap: 20px;
+    transform: translateY(30px); opacity: 0;
+    transition: color 0.3s, transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s;
+    background: none;
   }
-  .nav-links a .link-label { opacity: 0; transform: translateX(-10px); transition: opacity 0.4s, transform 0.4s; }
-  nav.open .nav-links a .link-label { opacity: 1; transform: translateX(0); }
-  .nav-links a:hover { color: var(--fg); }
-  .nav-links a.active { color: var(--accent); }
-
-  .nav-icon { width: 18px; height: 18px; flex-shrink: 0; }
-  .nav-icon path, .nav-icon circle, .nav-icon rect, .nav-icon line { stroke: currentColor; stroke-width: 1.2; fill: none; }
-
-  .nav-signature {
-    position: absolute; bottom: 28px;
-    font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 11px;
-    color: rgba(240,236,228,0.2); writing-mode: vertical-rl;
-    letter-spacing: 0.15em; white-space: nowrap;
-    opacity: 1; transition: opacity 0.3s;
-  }
-  nav.open .nav-signature { opacity: 0; }
-
-  /* ── MAIN ── */
-  main { margin-left: var(--nav-w); transition: margin-left var(--transition); }
-  nav.open ~ main { margin-left: var(--nav-w-open); }
-
-  /* ── HERO ── */
-  #hero {
-    position: relative; height: 100svh;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 8vw 10vh; overflow: hidden;
-  }
-  .hero-video {
-    position: absolute; inset: 0;
-    object-fit: cover; width: 100%; height: 100%; opacity: 0.45;
-  }
-  .hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(10,10,9,0.95) 0%, rgba(10,10,9,0.2) 50%, rgba(10,10,9,0.5) 100%);
-    pointer-events: none;
-  }
-  .hero-content { position: relative; z-index: 2; }
-  .hero-eyebrow {
-    font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent);
-    margin-bottom: 20px; opacity: 0; transform: translateY(20px);
-    animation: fadeUp 1s 0.3s forwards;
-  }
-  .hero-name {
-    font-family: 'Cormorant Garamond', serif; font-weight: 300;
-    font-size: clamp(3.5rem, 10vw, 9rem); line-height: 0.9; letter-spacing: -0.02em;
-    opacity: 0; transform: translateY(30px); animation: fadeUp 1.1s 0.5s forwards;
-  }
-  .hero-name em { font-style: italic; color: var(--accent); }
-  .hero-sub {
-    margin-top: 28px; font-size: 12px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--muted); max-width: 320px; line-height: 2;
-    opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.8s forwards;
-  }
-
-  .scroll-hint {
-    position: absolute; bottom: 36px; right: 8vw;
-    display: flex; align-items: center; gap: 12px;
-    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);
-    opacity: 0; animation: fadeUp 1s 1.4s forwards;
-  }
-  .scroll-line { width: 40px; height: 1px; background: var(--muted); position: relative; overflow: hidden; }
-  .scroll-line::after {
-    content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%;
-    background: var(--accent); animation: scanLine 2s 2s infinite;
-  }
-
-  @keyframes scanLine { 0%{left:-100%} 100%{left:100%} }
-  @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
-
-  /* ── SECTIONS ── */
-  section { padding: 10vh 8vw; }
-  .section-label {
-    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 60px;
-    display: flex; align-items: center; gap: 20px;
-  }
-  .section-label::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
-
-  /* ── GALERIE ── */
-  #galerie { padding-top: 14vh; }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: 30px;
-    gap: 12px;
-  }
-
-  /* Masquer tant que le layout n'est pas calculé */
-  .gallery-grid:not(.layout-ready) .photo-item { opacity: 0; }
-  .gallery-grid.layout-ready .photo-item { transition: opacity 0.6s ease; opacity: 1; }
-
-  .photo-item {
-    overflow: hidden; position: relative;
-    cursor: none; background: #1a1a18;
-    /* Les colonnes/rows sont injectées en JS selon orientation */
-  }
-
-  .photo-item img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    transition: transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.6s;
-    filter: grayscale(15%);
-  }
-  .photo-item:hover img { transform: scale(1.04); filter: grayscale(0%); }
-
-  .photo-caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 24px 20px 18px;
-    background: linear-gradient(transparent, rgba(10,10,9,0.85));
-    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
-    transform: translateY(10px); opacity: 0; transition: all 0.4s;
-  }
-  .photo-item:hover .photo-caption { transform: translateY(0); opacity: 1; }
-
-  /* ── ABOUT ── */
-  #about {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    border-top: 1px solid rgba(240,236,228,0.07);
-  }
-  .about-text h2 {
-    font-family: 'Cormorant Garamond', serif; font-weight: 300;
-    font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 32px;
-  }
-  .about-text h2 em { font-style: italic; color: var(--accent); }
-  .about-text p { font-size: 13px; line-height: 2; color: var(--muted); margin-bottom: 20px; }
-  .about-img { position: relative; aspect-ratio: 3/4; overflow: hidden; }
-  .about-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
-  .about-img::after {
-    content: ''; position: absolute; bottom: -30px; left: -30px;
-    width: 120px; height: 120px; border: 1px solid var(--accent); pointer-events: none;
-  }
-
-  .deco-svg { position: absolute; pointer-events: none; opacity: 0.06; }
-
-  /* ── CONTACT ── */
-  #contact {
-    text-align: center; padding: 14vh 8vw 16vh;
-    border-top: 1px solid rgba(240,236,228,0.07);
-    position: relative; overflow: hidden;
-  }
-  #contact h2 {
-    font-family: 'Cormorant Garamond', serif; font-weight: 300;
-    font-size: clamp(2.8rem, 7vw, 7rem); line-height: 1; margin-bottom: 40px;
-  }
-  #contact p { font-size: 12px; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 56px; }
-
-  .mail-wrapper { display: inline-flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
-  .btn-mail {
-    display: inline-flex; align-items: center; gap: 16px;
-    color: var(--accent); text-decoration: none;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 300; font-style: italic;
-    letter-spacing: 0.05em; cursor: none;
-  }
-  .btn-mail-icon { width: 20px; height: 20px; flex-shrink: 0; opacity: 0.4; transition: opacity 0.5s; }
-  .btn-mail:hover .btn-mail-icon { opacity: 0.9; }
-  .btn-mail-icon path { stroke: currentColor; stroke-width: 1.2; fill: none; }
-
-  .mail-chars { display: inline-flex; overflow: visible; }
-  .mail-char {
-    display: inline-block;
-    transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.4s, color 0.3s;
-    will-change: transform, opacity;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid rgba(240,236,228,0.05);
-    padding: 28px 8vw; display: flex; justify-content: space-between; align-items: center;
-    font-size: 10px; letter-spacing: 0.2em; color: rgba(240,236,228,0.18);
-  }
-
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    position: fixed; inset: 0; z-index: 200;
-    background: rgba(10,10,9,0.96);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.4s; cursor: none;
-  }
-  .lightbox.active { opacity: 1; pointer-events: all; }
-  .lightbox img {
-    max-width: 90vw; max-height: 88vh; object-fit: contain;
-    transform: scale(0.96); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-  }
-  .lightbox.active img { transform: scale(1); }
-  .lightbox-close {
-    position: absolute; top: 28px; right: 36px;
-    background: none; border: none; color: var(--fg);
-    cursor: none; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; padding: 8px;
-  }
-  .lightbox-close:hover { color: var(--accent); }
-  .lb-nav {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: none; border: none; color: var(--muted);
-    cursor: none; padding: 16px 20px; font-size: 10px; letter-spacing: 0.2em; transition: color 0.3s;
-  }
-  .lb-nav:hover { color: var(--fg); }
-  .lb-prev { left: 24px; } .lb-next { right: 24px; }
-
-  /* ══ RESPONSIVE TABLET ══ */
-  @media (max-width: 1024px) {
-    .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 36px; }
-    #about { gap: 48px; }
-  }
-
-  /* ══ RESPONSIVE MOBILE ══ */
-  @media (max-width: 768px) {
-    body { cursor: auto; }
-    .cursor { display: none; }
-
-    nav {
-      left: 0; right: 0; top: 0; bottom: auto;
-      width: 100% !important; height: 58px;
-      flex-direction: row; align-items: center; justify-content: space-between;
-      padding: 0 24px; border-right: none;
-      border-bottom: 1px solid rgba(240,236,228,0.07);
-      overflow: hidden;
-      transition: height 0.65s cubic-bezier(0.16,1,0.3,1), background 0.4s;
-    }
-    nav.open {
-      height: 100svh; background: rgba(10,10,9,0.97);
-      align-items: flex-start; flex-direction: column;
-      justify-content: flex-start; padding: 80px 36px 40px; gap: 0;
-    }
-    .nav-toggle { position: relative; top: auto; left: auto; transform: none; order: 2; cursor: pointer; }
-    .nav-links { flex-direction: column; gap: 0; width: 100%; padding-left: 0; order: 3; }
-    .nav-links li { border-bottom: 1px solid rgba(240,236,228,0.05); overflow: hidden; }
-    .nav-links a {
-      padding: 22px 0; font-size: 13px; gap: 20px;
-      transform: translateY(30px); opacity: 0;
-      transition: color 0.3s, transform 0.55s cubic-bezier(0.16,1,0.3,1), opacity 0.55s;
-    }
-    .nav-links li:nth-child(1) a { transition-delay: 0.08s; }
-    .nav-links li:nth-child(2) a { transition-delay: 0.16s; }
-    .nav-links li:nth-child(3) a { transition-delay: 0.24s; }
-    nav.open .nav-links a { transform: translateY(0); opacity: 1; }
-    .nav-links a .link-label { opacity: 0; transform: none; transition: opacity 0.3s 0.2s; }
-    nav.open .nav-links a .link-label { opacity: 1; }
-    .nav-icon { width: 22px; height: 22px; }
-    .nav-signature {
-      position: static; writing-mode: horizontal-tb; font-size: 13px;
-      margin-top: 40px; opacity: 0; transform: translateY(10px);
-      transition: opacity 0.4s 0.35s, transform 0.4s 0.35s; order: 4; align-self: flex-start;
-    }
-    nav.open .nav-signature { opacity: 0.3; transform: translateY(0); }
-
-    main { margin-left: 0 !important; margin-bottom: 0; padding-top: 58px; }
-
-    #hero { height: 100svh; padding: 0 7vw 12vh; }
-    .hero-name { font-size: clamp(3.2rem, 15vw, 5.5rem); }
-    .hero-sub { font-size: 10px; max-width: 240px; }
-    .scroll-hint { display: none; }
-    .deco-svg:last-of-type { display: none; }
-
-    section { padding: 8vh 6vw; }
-
-    #galerie { padding-top: 10vh; overflow: hidden; }
-    .gallery-grid { display: flex; flex-direction: column; gap: 10px; }
-    .photo-item {
-      width: 100% !important; grid-column: unset !important;
-      grid-row: unset !important; aspect-ratio: 4/3; height: auto;
-    }
-    .photo-item:nth-child(1), .photo-item:nth-child(5),
-    .photo-item:nth-child(9), .photo-item:nth-child(13) { aspect-ratio: 3/4; }
-    .gallery-row { display: flex; gap: 10px; }
-    .gallery-row .photo-item { flex: 1; aspect-ratio: 2/3; }
-    .photo-caption { opacity: 0.6; transform: translateY(0); }
-
-    #about { grid-template-columns: 1fr; gap: 36px; }
-    .about-img { display: none; }
-    .about-text h2 { font-size: clamp(2rem, 10vw, 3.5rem); }
-    .about-text p { font-size: 12px; }
-
-    #contact { padding: 10vh 6vw 12vh; }
-    #contact h2 { font-size: clamp(2.2rem, 11vw, 3.8rem); }
-    .btn-mail { font-size: clamp(1rem, 4.5vw, 1.4rem); }
-
-    footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 6vw; }
-    footer svg { display: none; }
-  }
-
-  @media (max-width: 380px) {
-    .hero-name { font-size: 3rem; }
-    .btn-mail { font-size: 0.9rem; }
-    .nav-links a { font-size: 12px; padding: 18px 0; }
-  }
-
-  /* ── GRAIN OVERLAY ── */
-  body::after {
-    content: ''; position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.025; pointer-events: none; z-index: 998;
-  }
-
-  /* ── REVEAL AU SCROLL ── */
-  .reveal {
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.22s; }
-  .reveal-delay-3 { transition-delay: 0.36s; }
+  .nav-links li:nth-child(1) a { transition-delay: 0.08s; }
+  .nav-links li:nth-child(2) a { transition-delay: 0.16s; }
+  .nav-links li:nth-child(3) a { transition-delay: 0.24s; }
+  .nav-links li:nth-child(4) a { transition-delay: 0.32s; }
+  nav.mob-open .nav-links a { transform: translateY(0); opacity: 1; }
+  .nav-footer { display: none; }
+  main { margin-left: 0 !important; padding-top: 58px; }
+  #hero { height: 100svh; padding: 0 7vw 12vh; }
+  .hero-name { font-size: clamp(3.2rem, 15vw, 5.5rem); }
+  section { padding: 8vh 6vw; }
+  #galerie { padding-top: 10vh; }
+  .film-track { height: 60vw; padding: 0 5vw; }
+  .photo-item[data-orientation="portrait"] { width: calc(60vw * 0.67); }
+  .photo-item[data-orientation="paysage"]  { width: calc(60vw * 1.55); }
+  #about { grid-template-columns: 1fr; gap: 36px; }
+  .about-img { display: none; }
+  .about-text h2 { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+  .cinema-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .cinema-inner { height: 70vh; }
+  #contact { padding: 10vh 6vw 12vh; }
+  footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 6vw; }
+}
+/* Desktop — masquer le toggle mobile */
+@media (min-width: 769px) {
+  .nav-toggle-mob { display: none; }
+}
 </style>
 </head>
 <body>
@@ -443,9 +619,15 @@
 
 <!-- NAV -->
 <nav id="nav" role="navigation" aria-label="Navigation principale">
-  <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+  <!-- Toggle mobile seulement -->
+  <button class="nav-toggle-mob" id="navToggleMob" aria-label="Ouvrir le menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
+
+  <div class="nav-brand">
+    <div class="nav-brand-name">Augustin<br><em>Fleury</em></div>
+    <span class="nav-brand-title">Photographe</span>
+  </div>
 
   <ul class="nav-links">
     <li>
@@ -456,7 +638,7 @@
           <rect x="3" y="13" width="8" height="8" rx="1"/>
           <rect x="13" y="13" width="8" height="8" rx="1"/>
         </svg>
-        <span class="link-label">Galerie</span>
+        Galerie
       </a>
     </li>
     <li>
@@ -465,7 +647,16 @@
           <circle cx="12" cy="8" r="4"/>
           <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
-        <span class="link-label">À propos</span>
+        À propos
+      </a>
+    </li>
+    <li>
+      <a href="#cinema" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <polygon points="10,9 16,12 10,15"/>
+        </svg>
+        Court métrage
       </a>
     </li>
     <li>
@@ -474,222 +665,235 @@
           <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/>
           <polyline points="22,6 12,13 2,6"/>
         </svg>
-        <span class="link-label">Contact</span>
+        Contact
       </a>
     </li>
   </ul>
 
-  <span class="nav-signature" aria-hidden="true">Augustin Fleury</span>
+  <div class="nav-footer">
+    <div class="nav-footer-text">
+      Photographie<br>& Lumière<br>— 2025
+    </div>
+  </div>
 </nav>
 
 <!-- MAIN -->
 <main>
 
-  <!-- HERO -->
-  <section id="hero" aria-label="Présentation">
-    <video class="hero-video" autoplay muted loop playsinline
-           poster="assets/Exportsfinals_60_resultat.jpg"
-           aria-hidden="true">
-      <source src="assets/DJI_0609.MP4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
+<!-- HERO -->
+<section id="hero" aria-label="Présentation">
+  <video class="hero-video" autoplay muted loop playsinline
+    poster="assets/Exportsfinals_60_resultat.jpg" aria-hidden="true">
+    <source src="assets/DJI_0609.MP4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
 
-    <svg class="deco-svg" style="bottom:8%;left:6%;width:140px;height:140px;opacity:0.07" viewBox="0 0 140 140" aria-hidden="true">
-      <line x1="0" y1="70" x2="140" y2="70" stroke="#c8a96e" stroke-width="0.6">
-        <animate attributeName="x2" values="140;100;140" dur="6s" repeatCount="indefinite"/>
-      </line>
-      <line x1="70" y1="0" x2="70" y2="140" stroke="#c8a96e" stroke-width="0.6">
-        <animate attributeName="y2" values="140;100;140" dur="8s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="70" cy="70" r="30" stroke="#c8a96e" stroke-width="0.4" fill="none" stroke-dasharray="2 5">
-        <animateTransform attributeName="transform" type="rotate" from="0 70 70" to="360 70 70" dur="20s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="70" cy="70" r="4" fill="none" stroke="#c8a96e" stroke-width="0.6">
-        <animate attributeName="r" values="4;7;4" dur="4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
+  <svg class="deco-svg" style="bottom:8%;left:6%;width:140px;height:140px;opacity:0.07" viewBox="0 0 140 140" aria-hidden="true">
+    <line x1="0" y1="70" x2="140" y2="70" stroke="#c8a96e" stroke-width="0.6">
+      <animate attributeName="x2" values="140;100;140" dur="6s" repeatCount="indefinite"/>
+    </line>
+    <line x1="70" y1="0" x2="70" y2="140" stroke="#c8a96e" stroke-width="0.6">
+      <animate attributeName="y2" values="140;100;140" dur="8s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="70" cy="70" r="30" stroke="#c8a96e" stroke-width="0.4" fill="none" stroke-dasharray="2 5">
+      <animateTransform attributeName="transform" type="rotate" from="0 70 70" to="360 70 70" dur="20s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="70" cy="70" r="4" fill="none" stroke="#c8a96e" stroke-width="0.6">
+      <animate attributeName="r" values="4;7;4" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
 
-    <svg class="deco-svg" style="top:10%;right:10%;width:300px;height:300px" viewBox="0 0 300 300" aria-hidden="true">
-      <circle cx="150" cy="150" r="140" stroke="#c8a96e" stroke-width="0.5" fill="none">
-        <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="80s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="150" cy="150" r="100" stroke="#c8a96e" stroke-width="0.3" fill="none" stroke-dasharray="4 8">
-        <animateTransform attributeName="transform" type="rotate" from="360 150 150" to="0 150 150" dur="50s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="150" cy="10" r="3" fill="#c8a96e" opacity="0.6">
-        <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="80s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
+  <svg class="deco-svg" style="top:10%;right:10%;width:300px;height:300px" viewBox="0 0 300 300" aria-hidden="true">
+    <circle cx="150" cy="150" r="140" stroke="#c8a96e" stroke-width="0.5" fill="none">
+      <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="80s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="150" r="100" stroke="#c8a96e" stroke-width="0.3" fill="none" stroke-dasharray="4 8">
+      <animateTransform attributeName="transform" type="rotate" from="360 150 150" to="0 150 150" dur="50s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="10" r="3" fill="#c8a96e" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="80s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
 
-    <div class="hero-content">
-      <p class="hero-eyebrow">Photographie — Passion &amp; Lumière</p>
-      <h1 class="hero-name">Augustin<br><em>Fleury</em></h1>
-      <p class="hero-sub">Des images qui respirent.<br>Des instants capturés avec intention.</p>
-    </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Photographie — Passion &amp; Lumière</p>
+    <h1 class="hero-name">Augustin<br><em>Fleury</em></h1>
+    <p class="hero-sub">Des images qui respirent.<br>Des instants capturés avec intention.</p>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    Défiler
+    <span class="scroll-line"></span>
+  </div>
+</section>
 
-    <div class="scroll-hint" aria-hidden="true">
-      Défiler
-      <span class="scroll-line"></span>
-    </div>
-  </section>
+<!-- GALERIE -->
+<section id="galerie" aria-label="Galerie photographique">
+  <div class="section-label reveal">Galerie</div>
 
-  <!-- GALERIE -->
-  <section id="galerie" aria-label="Galerie photographique">
-    <div class="section-label reveal">Galerie</div>
-
-    <svg width="100%" height="2" viewBox="0 0 800 2" preserveAspectRatio="none" style="margin-bottom:40px;opacity:0.15" aria-hidden="true">
-      <line x1="0" y1="1" x2="800" y2="1" stroke="#c8a96e" stroke-width="1" stroke-dasharray="4 8">
-        <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="3s" repeatCount="indefinite"/>
-      </line>
-    </svg>
-
-    <div class="gallery-grid">
-      <div class="photo-item reveal" data-index="0">
-        <img src="assets/Exportsfinals_02.jpg" alt="Portrait en lumière naturelle par Augustin Fleury" loading="lazy" width="800" height="1000">
-        <div class="photo-caption">Lumière naturelle</div>
+  <div class="film-strip" id="filmStrip">
+    <div class="film-track" id="filmTrack">
+      <div class="photo-item" data-index="0" data-orientation="portrait" data-num="01">
+        <img src="assets/champs.portrait.JPG" alt="Champs par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Champs</div>
       </div>
-      <div class="photo-item reveal reveal-delay-1" data-index="1">
-        <img src="assets/DSC01484.JPG" alt="Scène extérieure photographiée par Augustin Fleury" loading="lazy" width="800" height="600">
-        <div class="photo-caption">Extérieur</div>
+      <div class="photo-item" data-index="1" data-orientation="paysage" data-num="02">
+        <img src="assets/projecteur.paysage.jpg" alt="Projecteur par Augustin Fleury" loading="eager">
+        <div class="photo-caption">Projecteur</div>
       </div>
-      <div class="photo-item reveal reveal-delay-2" data-index="2">
-        <img src="assets/Exportsfinals_60_resultat.jpg" alt="Composition minimaliste par Augustin Fleury" loading="lazy" width="800" height="600">
+      <div class="photo-item" data-index="2" data-orientation="portrait" data-num="03">
+        <img src="assets/cordeliers.portrait.JPG" alt="Cordeliers par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Cordeliers</div>
+      </div>
+      <div class="photo-item" data-index="3" data-orientation="paysage" data-num="04">
+        <img src="assets/eglise.paysage.jpg" alt="Église par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Église</div>
+      </div>
+      <div class="photo-item" data-index="4" data-orientation="portrait" data-num="05">
+        <img src="assets/bar.portrait.JPG" alt="Bar par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Bar</div>
+      </div>
+      <div class="photo-item" data-index="5" data-orientation="paysage" data-num="06">
+        <img src="assets/armé.paysage.jpg" alt="Armée par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Armée</div>
+      </div>
+      <div class="photo-item" data-index="6" data-orientation="portrait" data-num="07">
+        <img src="assets/orgue.portrait.JPG" alt="Orgue par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Orgue</div>
+      </div>
+      <div class="photo-item" data-index="7" data-orientation="paysage" data-num="08">
+        <img src="assets/orgue.paysage.jpg" alt="Orgue paysage par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Orgue — Lumière</div>
+      </div>
+      <div class="photo-item" data-index="8" data-orientation="portrait" data-num="09">
+        <img src="assets/scout.portrait.JPG" alt="Scout par Augustin Fleury" loading="lazy">
+        <div class="photo-caption">Scout</div>
+      </div>
+      <div class="photo-item" data-index="9" data-orientation="paysage" data-num="10">
+        <img src="assets/Exportsfinals_60_resultat.jpg" alt="Minimalisme par Augustin Fleury" loading="lazy">
         <div class="photo-caption">Minimalisme</div>
       </div>
-      <div class="photo-item reveal" data-index="3">
-        <img src="assets/deboutprojecteurnoiretbalnc_resultat.jpg" alt="Portrait noir et blanc sous projecteur par Augustin Fleury" loading="lazy" width="800" height="1000">
-        <div class="photo-caption">Noir &amp; blanc</div>
-      </div>
-      <div class="photo-item reveal reveal-delay-1" data-index="4">
-        <img src="assets/DSC02292.JPG" alt="Ambiance photographique par Augustin Fleury" loading="lazy" width="800" height="600">
-        <div class="photo-caption">Ambiance</div>
-      </div>
-      <div class="photo-item reveal reveal-delay-2" data-index="5">
-        <img src="assets/Exportsfinals_07.jpg" alt="Série portrait par Augustin Fleury" loading="lazy" width="800" height="1000">
-        <div class="photo-caption">Portrait</div>
-      </div>
-      <div class="photo-item reveal" data-index="6">
-        <img src="assets/DSC00593.JPG" alt="L'instant capturé par Augustin Fleury" loading="lazy" width="800" height="600">
-        <div class="photo-caption">L'instant</div>
-      </div>
-      <div class="photo-item reveal reveal-delay-1" data-index="7">
-        <img src="assets/Exportsfinals_13.jpg" alt="Étude de lumière par Augustin Fleury" loading="lazy" width="800" height="1000">
-        <div class="photo-caption">Lumière</div>
-      </div>
-      <div class="photo-item reveal" data-index="8">
-        <img src="assets/DSC01299.JPG" alt="Composition photographique par Augustin Fleury" loading="lazy" width="800" height="600">
-        <div class="photo-caption">Composition</div>
-      </div>
-      <div class="photo-item reveal reveal-delay-1" data-index="9">
-        <img src="assets/Exportsfinals_47_resultat.jpg" alt="Silence et contemplation par Augustin Fleury" loading="lazy" width="800" height="1000">
-        <div class="photo-caption">Silence</div>
-      </div>
-      <div class="photo-item reveal reveal-delay-2" data-index="10">
-        <img src="assets/DSC02478.JPG" alt="Profondeur de champ par Augustin Fleury" loading="lazy" width="800" height="600">
-        <div class="photo-caption">Profondeur</div>
-      </div>
-      <div class="photo-item reveal" data-index="11">
-        <img src="assets/Exportsfinals_53_resultat.jpg" alt="Série finale par Augustin Fleury" loading="lazy" width="800" height="1000">
+      <div class="photo-item" data-index="10" data-orientation="portrait" data-num="11">
+        <img src="assets/Exportsfinals_53_resultat.jpg" alt="Série par Augustin Fleury" loading="lazy">
         <div class="photo-caption">Série</div>
       </div>
-      <div class="photo-item reveal reveal-delay-1" data-index="12">
-        <img src="assets/DSC03799.JPG" alt="Passage et mouvement par Augustin Fleury" loading="lazy" width="800" height="600">
-        <div class="photo-caption">Passage</div>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- À PROPOS -->
-  <section id="about" aria-label="À propos d'Augustin Fleury">
-    <div class="about-text">
-      <div class="section-label reveal">À propos</div>
-      <h2 class="reveal"><em>Photographier,</em><br>c'est voir<br>autrement.</h2>
-      <p class="reveal reveal-delay-1">
-        Je m'appelle Augustin Fleury. Je ne suis pas photographe de métier — je suis photographe parce que je ne peux pas faire autrement. L'appareil est une façon d'exister dans le monde, de ralentir, de regarder vraiment.
+  <!-- Footer galerie -->
+  <div class="film-footer" aria-hidden="true">
+    <span id="filmCounter">01 / 11</span>
+    <div class="film-progress-track">
+      <div class="film-progress-thumb" id="filmThumb"></div>
+    </div>
+    <div class="film-nav-btns">
+      <button class="film-btn" id="filmPrev" aria-label="Photo précédente">←</button>
+      <button class="film-btn" id="filmNext" aria-label="Photo suivante">→</button>
+    </div>
+  </div>
+  <p class="film-btn-hint reveal">← glisser ou utiliser les flèches →</p>
+</section>
+
+<!-- À PROPOS -->
+<section id="about" aria-label="À propos d'Augustin Fleury">
+  <div class="about-text">
+    <div class="section-label reveal">À propos</div>
+    <h2 class="reveal"><em>Photographier,</em><br>c'est voir<br>autrement.</h2>
+
+    <div class="about-phrases">
+      <p class="about-phrase" data-phrase="0">
+        Je m'appelle <strong>Augustin Fleury</strong>. Je ne suis pas photographe de métier.
       </p>
-      <p class="reveal reveal-delay-2">
-        Pas de studio, pas de tarifs sur mesure. Juste une passion entière pour la lumière, le cadre, l'instant qui ne se reproduira jamais. Si quelque chose dans mon travail vous touche, écrivez-moi.
+      <p class="about-phrase" data-phrase="1">
+        Je photographie car pour moi la photo est une façon <em>d'exister dans le monde</em>, de ralentir, de regarder vraiment.
+      </p>
+      <p class="about-phrase" data-phrase="2">
+        Pas de studio, des tarifs sur mesure. Juste une passion entière pour les rencontres, le cadre, <em>la beauté de l'instant</em> qui ne se reproduira jamais.
+      </p>
+      <p class="about-phrase" data-phrase="3">
+        Si quelque chose dans mon travail vous touche ou que vous désirez prendre rendez-vous, <strong>écrivez-moi</strong>.
       </p>
     </div>
-    <div class="about-img reveal reveal-delay-1" style="position:relative">
-      <img src="assets/deboutprojecteurnoiretbalnc_resultat.jpg" alt="Augustin Fleury — photographe">
+  </div>
 
-      <svg style="position:absolute;top:-24px;right:-24px;width:80px;height:80px;pointer-events:none;opacity:0.4" viewBox="0 0 80 80" aria-hidden="true">
-        <rect x="1" y="1" width="78" height="78" stroke="#c8a96e" stroke-width="0.6" fill="none" stroke-dasharray="3 5">
-          <animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="30s" repeatCount="indefinite"/>
-        </rect>
-        <rect x="15" y="15" width="50" height="50" stroke="#c8a96e" stroke-width="0.4" fill="none" stroke-dasharray="1 6">
-          <animateTransform attributeName="transform" type="rotate" from="360 40 40" to="0 40 40" dur="20s" repeatCount="indefinite"/>
-        </rect>
-        <circle cx="40" cy="40" r="3" fill="#c8a96e" opacity="0.5">
-          <animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/>
-        </circle>
+  <div class="about-img reveal reveal-delay-1" style="position:relative">
+    <img src="assets/bar.portrait.JPG" alt="Augustin Fleury — photographe">
+    <svg style="position:absolute;top:-24px;right:-24px;width:80px;height:80px;pointer-events:none;opacity:0.4" viewBox="0 0 80 80" aria-hidden="true">
+      <rect x="1" y="1" width="78" height="78" stroke="#c8a96e" stroke-width="0.6" fill="none" stroke-dasharray="3 5">
+        <animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="30s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="15" y="15" width="50" height="50" stroke="#c8a96e" stroke-width="0.4" fill="none" stroke-dasharray="1 6">
+        <animateTransform attributeName="transform" type="rotate" from="360 40 40" to="0 40 40" dur="20s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="40" cy="40" r="3" fill="#c8a96e" opacity="0.5">
+        <animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<!-- COURT MÉTRAGE -->
+<section id="cinema" aria-label="Court métrage">
+  <div class="cinema-inner">
+    <video class="cinema-video" id="cinemaVideo" autoplay muted loop playsinline aria-hidden="true">
+      <source src="assets/fond.mp4" type="video/mp4">
+    </video>
+    <div class="cinema-overlay"></div>
+
+    <button class="cinema-play-btn" id="cinemaPlayBtn" aria-label="Lecture / Pause">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <polygon id="playIcon" points="10,7 22,14 10,21" fill="#c8a96e"/>
       </svg>
+    </button>
+
+    <button class="cinema-mute-btn" id="cinemaMuteBtn" aria-label="Activer le son">
+      Son ♪
+    </button>
+
+    <div class="cinema-content reveal">
+      <div class="cinema-label">Court métrage</div>
+      <h2 class="cinema-title">Un autre<br><em>regard.</em></h2>
+      <p class="cinema-desc">L'image animée comme prolongement naturel de la photographie.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" aria-label="Contact">
-    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.04" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <path d="M0 200 Q200 100 400 200 T800 200" stroke="#c8a96e" stroke-width="1" fill="none">
-        <animate attributeName="d" values="M0 200 Q200 100 400 200 T800 200;M0 200 Q200 300 400 200 T800 200;M0 200 Q200 100 400 200 T800 200" dur="8s" repeatCount="indefinite"/>
-      </path>
-      <path d="M0 200 Q200 50 400 200 T800 200" stroke="#c8a96e" stroke-width="0.5" fill="none" opacity="0.5">
-        <animate attributeName="d" values="M0 200 Q200 50 400 200 T800 200;M0 200 Q200 350 400 200 T800 200;M0 200 Q200 50 400 200 T800 200" dur="12s" repeatCount="indefinite"/>
-      </path>
-      <g transform="translate(400,200)" opacity="0.6">
-        <line x1="-60" y1="0" x2="60" y2="0" stroke="#c8a96e" stroke-width="0.4">
-          <animate attributeName="x1" values="-60;-90;-60" dur="7s" repeatCount="indefinite"/>
-          <animate attributeName="x2" values="60;90;60" dur="7s" repeatCount="indefinite"/>
-        </line>
-        <line x1="0" y1="-60" x2="0" y2="60" stroke="#c8a96e" stroke-width="0.4">
-          <animate attributeName="y1" values="-60;-90;-60" dur="9s" repeatCount="indefinite"/>
-          <animate attributeName="y2" values="60;90;60" dur="9s" repeatCount="indefinite"/>
-        </line>
-        <circle cx="0" cy="0" r="40" stroke="#c8a96e" stroke-width="0.3" fill="none" stroke-dasharray="2 8">
-          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite"/>
-        </circle>
-      </g>
-      <circle cx="120" cy="80" r="1.5" fill="#c8a96e">
-        <animate attributeName="cy" values="80;120;80" dur="6s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.4;1;0.4" dur="6s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="680" cy="300" r="1.5" fill="#c8a96e">
-        <animate attributeName="cy" values="300;260;300" dur="8s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.3;0.9;0.3" dur="8s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
+<!-- CONTACT -->
+<section id="contact" aria-label="Contact">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.04" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M0 200 Q200 100 400 200 T800 200" stroke="#c8a96e" stroke-width="1" fill="none">
+      <animate attributeName="d" values="M0 200 Q200 100 400 200 T800 200;M0 200 Q200 300 400 200 T800 200;M0 200 Q200 100 400 200 T800 200" dur="8s" repeatCount="indefinite"/>
+    </path>
+  </svg>
 
-    <div class="section-label reveal" style="justify-content:center">Contact</div>
-    <h2 class="reveal">Une idée ?<br><em>Parlons-en.</em></h2>
-    <p class="reveal reveal-delay-1">Je réponds toujours aux messages qui viennent du cœur.</p>
+  <div class="section-label reveal" style="justify-content:center">Contact</div>
+  <h2 class="reveal">Une idée ?<br><em>Parlons-en.</em></h2>
+  <p class="reveal reveal-delay-1">Disponible le weekend</p>
+  <div class="mail-wrapper reveal reveal-delay-2">
+    <a href="mailto:summitofcreation@gmail.com" class="btn-mail" id="btnMail">
+      <svg class="btn-mail-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      <span class="mail-chars" id="mailChars">summitofcreation@gmail.com</span>
+    </a>
+  </div>
+</section>
 
-    <div class="mail-wrapper reveal reveal-delay-2">
-      <!-- ⚠️ Remplace l'adresse email ici -->
-      <a href="mailto:ton.email@exemple.com" class="btn-mail" id="btnMail">
-        <svg class="btn-mail-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-        <span class="mail-chars" id="mailChars">augustin.fleury@exemple.com</span>
-      </a>
-    </div>
-  </section>
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Augustin Fleury</span>
+  <svg width="60" height="12" viewBox="0 0 60 12" fill="none" style="opacity:0.25" aria-hidden="true">
+    <line x1="0" y1="6" x2="60" y2="6" stroke="#c8a96e" stroke-width="0.6" stroke-dasharray="2 4">
+      <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="30" cy="6" r="1.5" fill="#c8a96e">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+  <span>Photographie &amp; Lumière</span>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <span>© 2025 Augustin Fleury</span>
-    <svg width="60" height="12" viewBox="0 0 60 12" fill="none" style="opacity:0.25" aria-hidden="true">
-      <line x1="0" y1="6" x2="60" y2="6" stroke="#c8a96e" stroke-width="0.6" stroke-dasharray="2 4">
-        <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="2s" repeatCount="indefinite"/>
-      </line>
-      <circle cx="30" cy="6" r="1.5" fill="#c8a96e">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
-    <span>Photographie &amp; Lumière</span>
-  </footer>
 </main>
 
 <!-- LIGHTBOX -->
@@ -701,335 +905,408 @@
 </div>
 
 <script>
-  /* ── CURSEUR (desktop only) ── */
-  const dot   = document.getElementById('cursorDot');
-  const ring  = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  const isMobile = () => window.innerWidth <= 768;
+/* ── CURSEUR (desktop only) ── */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+const isMobile = () => window.innerWidth <= 768;
 
-  document.addEventListener('mousemove', e => {
-    if (isMobile()) return;
-    mx = e.clientX; my = e.clientY;
-  });
-
-  (function animCursor() {
-    if (!isMobile()) {
-      dot.style.transform  = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-    }
-    requestAnimationFrame(animCursor);
-  })();
-
-  document.querySelectorAll('a, button, .photo-item').forEach(el => {
-    el.addEventListener('mouseenter', () => { if (!isMobile()) document.body.classList.add('hovering'); });
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-  });
-
-  /* ── NAV TOGGLE ── */
-  const nav    = document.getElementById('nav');
-  const toggle = document.getElementById('navToggle');
-
-  toggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen);
-    if (isMobile()) {
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    }
-  });
-
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', e => {
-      if (isMobile()) {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        setTimeout(() => {
-          const top = target.getBoundingClientRect().top + window.scrollY - 58;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }, 350);
-      } else {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
-
-  document.addEventListener('click', e => {
-    if (nav.classList.contains('open') && !nav.contains(e.target)) {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-  });
-
-  /* ── ACTIVE NAV ON SCROLL ── */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const navObs   = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { threshold: 0.3 });
-  sections.forEach(s => navObs.observe(s));
-
-  /* ── REVEAL AU SCROLL ── */
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-  /* ── LIGHTBOX ── */
-  const photos  = Array.from(document.querySelectorAll('.photo-item img'));
-  const lb      = document.getElementById('lightbox');
-  const lbImg   = document.getElementById('lbImg');
-  let currentIdx = 0;
-
-  lbImg.style.transition = 'opacity 0.35s, transform 0.45s cubic-bezier(0.16,1,0.3,1)';
-
-  function openLb(idx) {
-    currentIdx = idx;
-    lbImg.src = photos[idx].src;
-    lbImg.alt = photos[idx].alt;
-    lb.classList.add('active');
-    document.body.style.overflow = 'hidden';
+document.addEventListener('mousemove', e => {
+  if (isMobile()) return;
+  mx = e.clientX; my = e.clientY;
+});
+(function animCursor() {
+  if (!isMobile()) {
+    dot.style.transform  = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
   }
-  function closeLb() {
-    lb.classList.remove('active');
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a, button, .photo-item').forEach(el => {
+  el.addEventListener('mouseenter', () => { if (!isMobile()) document.body.classList.add('hovering'); });
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+
+/* ── NAV MOBILE TOGGLE ── */
+const nav       = document.getElementById('nav');
+const toggleMob = document.getElementById('navToggleMob');
+if (toggleMob) {
+  toggleMob.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('mob-open');
+    toggleMob.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+}
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', e => {
+    if (isMobile()) {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      nav.classList.remove('mob-open');
+      if (toggleMob) toggleMob.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        const top = target.getBoundingClientRect().top + window.scrollY - 58;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 350);
+    }
+  });
+});
+document.addEventListener('click', e => {
+  if (isMobile() && nav.classList.contains('mob-open') && !nav.contains(e.target)) {
+    nav.classList.remove('mob-open');
+    if (toggleMob) toggleMob.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
-  function moveLb(dir) {
-    currentIdx = (currentIdx + dir + photos.length) % photos.length;
-    lbImg.style.opacity = '0';
-    lbImg.style.transform = `scale(0.96) translateX(${dir * 30}px)`;
-    setTimeout(() => {
-      lbImg.src = photos[currentIdx].src;
-      lbImg.alt = photos[currentIdx].alt;
-      lbImg.style.transition = 'none';
-      lbImg.style.opacity    = '0';
-      lbImg.style.transform  = `scale(0.96) translateX(${-dir * 30}px)`;
+});
+
+/* ── ACTIVE NAV ON SCROLL ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const navObs   = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => navObs.observe(s));
+
+/* ── REVEAL AU SCROLL ── */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ── TEXTE À PROPOS — apparition phrase par phrase au scroll ── */
+const phrases   = Array.from(document.querySelectorAll('.about-phrase'));
+const phraseObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Déclencher toutes les phrases avec délai en cascade
+      phrases.forEach((p, i) => {
+        setTimeout(() => p.classList.add('visible'), i * 200);
+      });
+      phraseObs.disconnect();
+    }
+  });
+}, { threshold: 0.2 });
+const aboutPhrases = document.querySelector('.about-phrases');
+if (aboutPhrases) phraseObs.observe(aboutPhrases);
+
+/* ── LIGHTBOX ── */
+const photos   = Array.from(document.querySelectorAll('#filmTrack .photo-item img'));
+const lb       = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lbImg');
+let currentIdx = 0;
+lbImg.style.transition = 'opacity 0.35s, transform 0.45s cubic-bezier(0.16,1,0.3,1)';
+
+function openLb(idx) {
+  currentIdx = idx;
+  lbImg.src = photos[idx].src;
+  lbImg.alt = photos[idx].alt;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function moveLb(dir) {
+  currentIdx = (currentIdx + dir + photos.length) % photos.length;
+  lbImg.style.opacity = '0';
+  lbImg.style.transform = `scale(0.96) translateX(${dir * 30}px)`;
+  setTimeout(() => {
+    lbImg.src = photos[currentIdx].src;
+    lbImg.alt = photos[currentIdx].alt;
+    lbImg.style.transition = 'none';
+    lbImg.style.opacity    = '0';
+    lbImg.style.transform  = `scale(0.96) translateX(${-dir * 30}px)`;
+    requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          lbImg.style.transition = 'opacity 0.35s, transform 0.45s cubic-bezier(0.16,1,0.3,1)';
-          lbImg.style.opacity    = '1';
-          lbImg.style.transform  = 'scale(1) translateX(0)';
-        });
+        lbImg.style.transition = 'opacity 0.35s, transform 0.45s cubic-bezier(0.16,1,0.3,1)';
+        lbImg.style.opacity    = '1';
+        lbImg.style.transform  = 'scale(1) translateX(0)';
       });
-    }, 180);
-  }
-
-  document.querySelectorAll('.photo-item').forEach((item, i) => {
-    item.addEventListener('click', () => openLb(i));
-  });
-  document.getElementById('lbClose').addEventListener('click', closeLb);
-  document.getElementById('lbPrev').addEventListener('click', () => moveLb(-1));
-  document.getElementById('lbNext').addEventListener('click', () => moveLb(1));
-  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-
-  document.addEventListener('keydown', e => {
-    if (!lb.classList.contains('active')) return;
-    if (e.key === 'Escape')      closeLb();
-    if (e.key === 'ArrowLeft')   moveLb(-1);
-    if (e.key === 'ArrowRight')  moveLb(1);
-  });
-
-  /* Swipe tactile */
-  let touchStartX = 0;
-  lb.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  lb.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 50) moveLb(dx < 0 ? 1 : -1);
-  });
-
-  /* ── PARALLAX HERO SVG (desktop) ── */
-  document.addEventListener('mousemove', e => {
-    if (isMobile()) return;
-    const x = (e.clientX / window.innerWidth  - 0.5) * 20;
-    const y = (e.clientY / window.innerHeight - 0.5) * 20;
-    document.querySelectorAll('.deco-svg').forEach(svg => {
-      svg.style.transform = `translate(${x}px,${y}px)`;
     });
+  }, 180);
+}
+
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbPrev').addEventListener('click', () => moveLb(-1));
+document.getElementById('lbNext').addEventListener('click', () => moveLb(1));
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('active')) return;
+  if (e.key === 'Escape')     closeLb();
+  if (e.key === 'ArrowLeft')  moveLb(-1);
+  if (e.key === 'ArrowRight') moveLb(1);
+});
+let touchStartX = 0;
+lb.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) moveLb(dx < 0 ? 1 : -1);
+});
+
+/* ── PARALLAX HERO SVG (desktop) ── */
+document.addEventListener('mousemove', e => {
+  if (isMobile()) return;
+  const x = (e.clientX / window.innerWidth  - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  document.querySelectorAll('.deco-svg').forEach(svg => {
+    svg.style.transform = `translate(${x}px,${y}px)`;
   });
+});
 
-  /* ── ANIMATION MAIL : désintégration → recomposition ── */
-  const btnMail  = document.getElementById('btnMail');
-  const charsEl  = document.getElementById('mailChars');
-
-  if (btnMail && charsEl) {
-    const text = charsEl.textContent.trim();
-    charsEl.innerHTML = text.split('').map(c =>
-      `<span class="mail-char">${c === ' ' ? '&nbsp;' : c}</span>`
-    ).join('');
-
-    const chars    = Array.from(charsEl.querySelectorAll('.mail-char'));
-    let isHovered  = false;
-
-    function rand(a, b) { return a + Math.random() * (b - a); }
-
-    function explode() {
-      chars.forEach(ch => {
-        const dx  = rand(-60, 60);
-        const dy  = rand(-40, 40);
-        const rot = rand(-25, 25);
-        ch.style.transition = `transform ${rand(0.3,0.55)}s cubic-bezier(0.16,1,0.3,1) ${rand(0,0.08)}s, opacity ${rand(0.2,0.4)}s`;
-        ch.style.transform  = `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.4)`;
-        ch.style.opacity    = '0';
-        ch.style.color      = 'var(--accent)';
-      });
-    }
-
-    function recompose() {
-      chars.forEach((ch, i) => {
-        const delay = i * 0.022;
-        ch.style.transition = `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}s, opacity 0.5s ${delay}s, color 0.3s`;
-        ch.style.transform  = 'translate(0,0) rotate(0deg) scale(1)';
-        ch.style.opacity    = '1';
-        ch.style.color      = 'var(--fg)';
-      });
-    }
-
-    function reset() {
-      chars.forEach(ch => {
-        ch.style.transition = 'opacity 0.4s, color 0.4s';
-        ch.style.transform  = 'translate(0,0) rotate(0deg) scale(1)';
-        ch.style.opacity    = '1';
-        ch.style.color      = 'var(--accent)';
-      });
-    }
-
-    btnMail.addEventListener('mouseenter', () => {
-      isHovered = true;
-      explode();
-      setTimeout(() => { if (isHovered) recompose(); }, 180);
-    });
-
-    btnMail.addEventListener('mouseleave', () => {
-      isHovered = false;
-      reset();
+/* ── ANIMATION MAIL ── */
+const btnMail = document.getElementById('btnMail');
+const charsEl = document.getElementById('mailChars');
+if (btnMail && charsEl) {
+  const text = charsEl.textContent.trim();
+  charsEl.innerHTML = text.split('').map(c =>
+    `<span class="mail-char">${c === ' ' ? '&nbsp;' : c}</span>`
+  ).join('');
+  const chars   = Array.from(charsEl.querySelectorAll('.mail-char'));
+  let isHovered = false;
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  function explode() {
+    chars.forEach(ch => {
+      const dx  = rand(-60, 60);
+      const dy  = rand(-40, 40);
+      const rot = rand(-25, 25);
+      ch.style.transition = `transform ${rand(0.3,0.55)}s cubic-bezier(0.16,1,0.3,1) ${rand(0,0.08)}s, opacity ${rand(0.2,0.4)}s`;
+      ch.style.transform  = `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.4)`;
+      ch.style.opacity    = '0';
+      ch.style.color      = 'var(--accent)';
     });
   }
+  function recompose() {
+    chars.forEach((ch, i) => {
+      const delay = i * 0.022;
+      ch.style.transition = `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}s, opacity 0.5s ${delay}s, color 0.3s`;
+      ch.style.transform  = 'translate(0,0) rotate(0deg) scale(1)';
+      ch.style.opacity    = '1';
+      ch.style.color      = 'var(--fg)';
+    });
+  }
+  function reset() {
+    chars.forEach(ch => {
+      ch.style.transition = 'opacity 0.4s, color 0.4s';
+      ch.style.transform  = 'translate(0,0) rotate(0deg) scale(1)';
+      ch.style.opacity    = '1';
+      ch.style.color      = 'var(--accent)';
+    });
+  }
+  btnMail.addEventListener('mouseenter', () => { isHovered = true; explode(); setTimeout(() => { if (isHovered) recompose(); }, 180); });
+  btnMail.addEventListener('mouseleave', () => { isHovered = false; reset(); });
+}
 
-  /* ══════════════════════════════════════════════
-     GALERIE ADAPTIVE — détection portrait/paysage
-     Charge chaque image, mesure ses dimensions,
-     puis choisit colonnes + rows selon orientation
-     et selon la breakpoint active.
-  ══════════════════════════════════════════════ */
-  (function initAdaptiveGallery() {
+/* ── VIDÉO COURT MÉTRAGE — play/pause + son ── */
+const cinemaVideo   = document.getElementById('cinemaVideo');
+const cinemaPlayBtn = document.getElementById('cinemaPlayBtn');
+const cinemaMuteBtn = document.getElementById('cinemaMuteBtn');
+const playIcon      = document.getElementById('playIcon');
 
-    const grid  = document.querySelector('.gallery-grid');
-    const items = Array.from(grid.querySelectorAll('.photo-item'));
-    const total = items.length;
-    let   loaded = 0;
-
-    // ── Paramètres de layout selon orientation ──────────────────────────
-    // Desktop (12 colonnes, row = 30px)
-    // Portrait  → colonne large + hauteur généreuse
-    // Paysage   → colonne large + hauteur plus réduite
-    // Carré     → traité comme paysage
-
-    // Chaque entrée : [colSpan_portrait, rowSpan_portrait, colSpan_landscape, rowSpan_landscape]
-    // colSpan = nombre de colonnes (sur 12 desktop / 6 tablet)
-    // rowSpan = nombre de rows (unité 30px desktop / 36px tablet)
-
-    // Séquence de "slots" éditoriaux qui se répète.
-    // On alterne entre large-gauche et large-droite pour varier.
-    const DESKTOP_SLOTS = [
-      // portrait favorisé à gauche, paysage à droite
-      { p: { col:'1/6',  rows:18 }, l: { col:'1/8',  rows:12 } },
-      { p: { col:'6/9',  rows:12 }, l: { col:'8/13', rows:12 } },
-      { p: { col:'9/13', rows:14 }, l: { col:'1/6',  rows:9  } },
-      { p: { col:'1/5',  rows:14 }, l: { col:'6/13', rows:9  } },
-      { p: { col:'5/9',  rows:16 }, l: { col:'1/7',  rows:11 } },
-      { p: { col:'9/13', rows:16 }, l: { col:'7/13', rows:11 } },
-      { p: { col:'1/6',  rows:14 }, l: { col:'1/5',  rows:10 } },
-      { p: { col:'6/10', rows:10 }, l: { col:'5/10', rows:10 } },
-      { p: { col:'10/13',rows:10 }, l: { col:'10/13',rows:10 } },
-      { p: { col:'1/5',  rows:16 }, l: { col:'1/8',  rows:12 } },
-      { p: { col:'5/8',  rows:14 }, l: { col:'8/13', rows:12 } },
-      { p: { col:'8/13', rows:12 }, l: { col:'1/6',  rows:10 } },
-      { p: { col:'1/6',  rows:12 }, l: { col:'6/13', rows:10 } },
-    ];
-
-    const TABLET_SLOTS = [
-      { p: { col:'1/4',  rows:16 }, l: { col:'1/5',  rows:11 } },
-      { p: { col:'4/7',  rows:11 }, l: { col:'5/7',  rows:11 } },
-      { p: { col:'1/4',  rows:13 }, l: { col:'1/4',  rows:9  } },
-      { p: { col:'4/7',  rows:13 }, l: { col:'4/7',  rows:9  } },
-      { p: { col:'1/3',  rows:15 }, l: { col:'1/5',  rows:10 } },
-      { p: { col:'3/5',  rows:12 }, l: { col:'5/7',  rows:10 } },
-      { p: { col:'5/7',  rows:12 }, l: { col:'1/4',  rows:10 } },
-      { p: { col:'1/4',  rows:14 }, l: { col:'4/7',  rows:10 } },
-      { p: { col:'4/7',  rows:14 }, l: { col:'1/4',  rows:11 } },
-      { p: { col:'1/4',  rows:13 }, l: { col:'4/7',  rows:11 } },
-      { p: { col:'4/7',  rows:13 }, l: { col:'1/4',  rows:12 } },
-      { p: { col:'1/4',  rows:11 }, l: { col:'4/6',  rows:12 } },
-      { p: { col:'4/7',  rows:11 }, l: { col:'6/7',  rows:12 } },
-    ];
-
-    // ── Applique le layout une fois toutes les images chargées ──────────
-    function applyLayout() {
-      const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
-      const isMob    = window.innerWidth <= 768;
-      const slots    = isTablet ? TABLET_SLOTS : DESKTOP_SLOTS;
-
-      items.forEach((item, i) => {
-        const img  = item.querySelector('img');
-        const w    = img.naturalWidth;
-        const h    = img.naturalHeight;
-        const slot = slots[i % slots.length];
-
-        if (isMob) {
-          // Mobile : flux colonne simple, aspect-ratio adaptatif
-          item.style.gridColumn = '';
-          item.style.gridRow    = '';
-          item.style.aspectRatio = (w > h) ? '4/3' : '3/4';
-          return;
-        }
-
-        const isPortrait = h > w;
-        const chosen     = isPortrait ? slot.p : slot.l;
-
-        item.style.gridColumn = chosen.col;
-        item.style.gridRow    = `span ${chosen.rows}`;
-      });
-
-      grid.classList.add('layout-ready');
+if (cinemaVideo && cinemaPlayBtn) {
+  cinemaPlayBtn.addEventListener('click', () => {
+    if (cinemaVideo.paused) {
+      cinemaVideo.play();
+      playIcon.setAttribute('points', '8,6 8,22 M16,6 16,22'); // pause — on recrée l'icône
+      cinemaPlayBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="7" y="6" width="4" height="16" fill="#c8a96e" rx="1"/>
+        <rect x="17" y="6" width="4" height="16" fill="#c8a96e" rx="1"/>
+      </svg>`;
+    } else {
+      cinemaVideo.pause();
+      cinemaPlayBtn.innerHTML = `<svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <polygon points="10,7 22,14 10,21" fill="#c8a96e"/>
+      </svg>`;
     }
+  });
+}
+if (cinemaVideo && cinemaMuteBtn) {
+  cinemaMuteBtn.addEventListener('click', () => {
+    cinemaVideo.muted = !cinemaVideo.muted;
+    cinemaMuteBtn.textContent = cinemaVideo.muted ? 'Son ♪' : 'Muet ✕';
+  });
+}
 
-    // ── Charge toutes les images puis applique ───────────────────────────
-    function onImageLoaded() {
-      loaded++;
-      if (loaded === total) applyLayout();
-    }
+/* ══════════════════════════════════════════════
+   PELLICULE — drag / inertie / focus / progress
+══════════════════════════════════════════════ */
+(function initFilmStrip() {
+  const strip   = document.getElementById('filmStrip');
+  const track   = document.getElementById('filmTrack');
+  const thumb   = document.getElementById('filmThumb');
+  const counter = document.getElementById('filmCounter');
+  const btnPrev = document.getElementById('filmPrev');
+  const btnNext = document.getElementById('filmNext');
+  const items   = Array.from(track.querySelectorAll('.photo-item'));
+  const total   = items.length;
+  if (!strip || !track) return;
 
+  let currentX    = 0;
+  let velX        = 0;
+  let isDragging  = false;
+  let startX      = 0;
+  let startOffset = 0;
+  let lastX       = 0;
+  let lastT       = 0;
+  let hasDragged  = false;
+  let rafId       = null;
+  let focusedIdx  = 0;
+  let touchDirLocked = null;
+  let touchStartY = 0;
+
+  function getMaxScroll() {
+    return -(track.scrollWidth - strip.clientWidth);
+  }
+  function applyX(x, animate) {
+    const max = getMaxScroll();
+    if (x > 0)   x = x * 0.25;
+    if (x < max) x = max + (x - max) * 0.25;
+    currentX = x;
+    track.style.transition = animate ? 'transform 0.55s cubic-bezier(0.16,1,0.3,1)' : 'none';
+    track.style.transform = `translateX(${x}px)`;
+    updateHUD();
+  }
+  function snapToNearest() {
+    const stripCx = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+    let bestDist = Infinity, bestItem = null;
     items.forEach(item => {
-      const img = item.querySelector('img');
-      if (img.complete && img.naturalWidth > 0) {
-        onImageLoaded();
-      } else {
-        img.addEventListener('load',  onImageLoaded, { once: true });
-        img.addEventListener('error', onImageLoaded, { once: true }); // ne pas bloquer si 404
-      }
+      const r  = item.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const d  = Math.abs(cx - stripCx);
+      if (d < bestDist) { bestDist = d; bestItem = item; }
     });
-
-    // ── Re-layout au resize (debounced) ─────────────────────────────────
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(applyLayout, 200);
+    if (!bestItem) return;
+    const itemCx   = bestItem.getBoundingClientRect().left + bestItem.offsetWidth / 2;
+    const centerDx = stripCx - itemCx;
+    const clampedX = Math.min(0, Math.max(getMaxScroll(), currentX + centerDx));
+    applyX(clampedX, true);
+  }
+  function updateHUD() {
+    const max = getMaxScroll();
+    const pct = max === 0 ? 0 : Math.min(1, Math.max(0, -currentX / -max));
+    const w   = (1 / total) * 100;
+    if (thumb) {
+      thumb.style.width = w + '%';
+      thumb.style.left  = (pct * (100 - w)) + '%';
+    }
+    const stripCx = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+    let bestDist = Infinity, bestIdx = 0;
+    items.forEach((item, i) => {
+      const r  = item.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const d  = Math.abs(cx - stripCx);
+      if (d < bestDist) { bestDist = d; bestIdx = i; }
     });
+    focusedIdx = bestIdx;
+    items.forEach((item, i) => item.classList.toggle('is-focused', i === bestIdx));
+    if (counter) counter.textContent =
+      String(bestIdx + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+    if (btnPrev) btnPrev.disabled = bestIdx === 0;
+    if (btnNext) btnNext.disabled = bestIdx === total - 1;
+  }
+  function runInertia() {
+    if (Math.abs(velX) < 0.5) { velX = 0; snapToNearest(); return; }
+    velX *= 0.90;
+    applyX(currentX + velX, false);
+    rafId = requestAnimationFrame(runInertia);
+  }
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(total - 1, idx));
+    const item    = items[idx];
+    const stripCx = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+    const itemCx  = item.getBoundingClientRect().left + item.offsetWidth / 2;
+    const target  = Math.min(0, Math.max(getMaxScroll(), currentX + (stripCx - itemCx)));
+    cancelAnimationFrame(rafId);
+    velX = 0;
+    applyX(target, true);
+  }
 
-  })();
+  if (btnPrev) btnPrev.addEventListener('click', () => goTo(focusedIdx - 1));
+  if (btnNext) btnNext.addEventListener('click', () => goTo(focusedIdx + 1));
+
+  strip.addEventListener('mousedown', e => {
+    isDragging = true; hasDragged = false;
+    startX = e.clientX; startOffset = currentX;
+    lastX = e.clientX; lastT = performance.now();
+    velX = 0; cancelAnimationFrame(rafId);
+    track.style.transition = 'none';
+    strip.style.cursor = 'grabbing';
+  }, { passive: true });
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 5) hasDragged = true;
+    const now = performance.now();
+    velX  = (e.clientX - lastX) / Math.max(1, now - lastT) * 16;
+    lastX = e.clientX; lastT = now;
+    applyX(startOffset + dx, false);
+  }, { passive: true });
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    strip.style.cursor = '';
+    hasDragged ? rafId = requestAnimationFrame(runInertia) : snapToNearest();
+  });
+  strip.addEventListener('click', e => {
+    if (hasDragged) { e.stopPropagation(); e.preventDefault(); }
+  }, true);
+
+  strip.addEventListener('touchstart', e => {
+    const t = e.touches[0];
+    startX = t.clientX; touchStartY = t.clientY;
+    startOffset = currentX; lastX = t.clientX; lastT = performance.now();
+    touchDirLocked = null; hasDragged = false; velX = 0;
+    cancelAnimationFrame(rafId);
+  }, { passive: true });
+  strip.addEventListener('touchmove', e => {
+    const t  = e.touches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - touchStartY;
+    if (!touchDirLocked && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+      touchDirLocked = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      if (touchDirLocked === 'h') isDragging = true;
+    }
+    if (touchDirLocked !== 'h') return;
+    e.preventDefault();
+    if (Math.abs(dx) > 5) hasDragged = true;
+    const now = performance.now();
+    velX  = (t.clientX - lastX) / Math.max(1, now - lastT) * 16;
+    lastX = t.clientX; lastT = now;
+    applyX(startOffset + dx, false);
+  }, { passive: false });
+  strip.addEventListener('touchend', () => {
+    isDragging = false; touchDirLocked = null;
+    rafId = requestAnimationFrame(runInertia);
+  }, { passive: true });
+
+  window.addEventListener('keydown', e => {
+    const r = strip.getBoundingClientRect();
+    const inView = r.top < window.innerHeight && r.bottom > 0;
+    if (!inView) return;
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(focusedIdx - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(focusedIdx + 1); }
+  });
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      if (hasDragged) return;
+      openLb(i);
+    });
+  });
+
+  updateHUD();
+})();
 </script>
 </body>
 </html>
